@@ -465,6 +465,25 @@ article was published.</span></span></p>
 <ol start="6" style="list-style-type: decimal">
 <li>In a single pipeline, filter for laureates who won their prize in the US, but were born outside of the US, and then create a frequency table (with the <code>count()</code> function) for their birth country (<code>born_country</code>) and arrange the resulting data frame in descending order of number of observations for each country. Which country is the most common?</li>
 </ol>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a>nobel_living_science <span class="sc">%&gt;%</span></span>
+<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a>  <span class="fu">filter</span>(born_country_us <span class="sc">==</span> <span class="st">&quot;Other&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a>  <span class="fu">count</span>(born_country) <span class="sc">%&gt;%</span></span>
+<span id="cb10-4"><a href="#cb10-4" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(n))</span></code></pre></div>
+<pre><code>## # A tibble: 33 × 2
+##    born_country       n
+##    &lt;chr&gt;          &lt;int&gt;
+##  1 Germany           20
+##  2 Japan             17
+##  3 United Kingdom    16
+##  4 France             8
+##  5 Canada             6
+##  6 China              6
+##  7 Switzerland        6
+##  8 Israel             5
+##  9 Norway             4
+## 10 Australia          3
+## # ℹ 23 more rows</code></pre>
+<p><strong><em>Germany is the most common country of birth with 20 followed by Japan and the UK.</em></strong></p>
 <p>🧶 ✅ ⬆️ Knit, <em>commit, and push your changes to GitHub with an appropriate commit message. Make sure to commit and push all changed files so that your Git pane is cleared up afterwards and review the md document on GitHub to make sure you’re happy with the final state of your work.</em></p>
 <p>Now go back through your write up to make sure you’ve answered all questions and all of your R chunks are properly labelled.
 Once you decide as a team that you’re done with this lab, all members of the team should pull the changes and knit the R Markdown document to confirm that they can reproduce the report.</p>
